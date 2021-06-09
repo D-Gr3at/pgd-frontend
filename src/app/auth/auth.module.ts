@@ -1,27 +1,25 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { AuthRoutingModule } from './auth-routing.module';
+//* Modules
+import { SharedModule } from './../shared/shared.module';
+import { NgModule } from '@angular/core';
 
-import {AuthRoutingModule} from './auth-routing.module';
-import {SharedModule} from '../shared/shared.module';
-import {LoginComponent} from './login/login.component';
-import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
-import {LayoutComponent} from './layout/layout.component';
+//* Components
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
+//* Directives
+
+//* Pipes
 
 @NgModule({
   declarations: [
     LoginComponent,
+    SignupComponent,
     ForgotPasswordComponent,
-    LayoutComponent
+    ResetPasswordComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    AuthRoutingModule
-  ],
-  exports: [
-    SharedModule
-  ]
+  imports: [SharedModule, AuthRoutingModule],
 })
-export class AuthModule {
-}
+export class AuthModule {}

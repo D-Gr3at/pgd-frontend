@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "pgd-pjt-frontend"
+    }
+  },
+  "defaultProject": "pgd-pjt-frontend",
+  "cli": {
+    "analytics": false
+  }
 }

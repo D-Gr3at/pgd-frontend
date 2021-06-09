@@ -1,0 +1,75 @@
+<div class="row justify-content-center mt-3" *ngIf="!sideBar">
+  <fa-icon [icon]="faUser" [size]="'3x'" class="h1"></fa-icon>
+</div>
+<div class="collapse show d-md-flex pt-2 pl-0 min-vh-100" id="sidebar">
+  <ul class="nav flex-column flex-nowrap overflow-hidden">
+    <li class="nav-item">
+      <a class="nav-link text-truncate" routerLink="/dashboard">
+        <fa-icon [icon]="dashboard" class="mr-1 h3"></fa-icon>
+        <span class="d-none d-sm-inline" *ngIf="!sideBar">Dashboard </span>
+      </a>
+    </li>
+    <li class="nav-item ml-1">
+      <a class="nav-link collapsed text-truncate" href="#submenu1" data-toggle="collapse" data-target="#submenu1">
+        <fa-icon [icon]="reports" class="mr-2 h3"></fa-icon>
+        <span class="d-none d-sm-inline" *ngIf="!sideBar">Reports</span>
+      </a>
+      <div class="collapse" id="submenu1" aria-expanded="false" *ngIf="!sideBar">
+        <ul class="flex-column pl-2 nav">
+          <li class="nav-item">
+            <a class="nav-link py-2" routerLink="/criminal-case">
+              <fa-icon [icon]="reportList" class="mr-1 h4"></fa-icon>
+            <span>Criminal Cases List</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link py-2" [routerLink]="'/criminal-case/add'">
+              <fa-icon [icon]="addReport" class="mr-1 h4"></fa-icon>
+            <span>Add Criminal Case</span>
+            </a>
+          </li>
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link collapsed py-1" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1">-->
+<!--              <fa-icon [icon]="addReport" class="mr-1 h5"></fa-icon>-->
+<!--              <span>Add Criminal Case</span>-->
+<!--            </a>-->
+<!--            <div class="collapse" id="submenu1sub1" aria-expanded="false">-->
+<!--              <ul class="flex-column nav pl-4">-->
+<!--                <li class="nav-item">-->
+<!--                  <a class="nav-link p-1" href="#">-->
+<!--                    <i class="fa fa-fw fa-clock-o"></i> Daily </a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                  <a class="nav-link p-1" href="#">-->
+<!--                    <fa-icon [icon]="dashboard"></fa-icon> Dashboard </a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                  <a class="nav-link p-1" href="#">-->
+<!--                    <i class="fa fa-fw fa-bar-chart"></i> Charts </a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                  <a class="nav-link p-1" href="#">-->
+<!--                    <i class="fa fa-fw fa-compass"></i> Areas </a>-->
+<!--                </li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--          </li>-->
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item ml-1">
+      <a class="nav-link text-truncate" routerLink="/analytics">
+        <fa-icon [icon]="analytics" class="mr-1 h3"></fa-icon>
+      <span class="d-none d-sm-inline" *ngIf="!sideBar">Analytics</span>
+      </a>
+    </li>
+<!--    <li class="nav-item ml-1">-->
+<!--      <a class="nav-link text-truncate" href="#">-->
+<!--        <fa-icon [icon]="dashboard" class="mr-1 h3"></fa-icon>-->
+<!--        <span class="d-none d-sm-inline" *ngIf="!sideBar">Export</span>-->
+<!--      </a>-->
+<!--    </li>-->
+  </ul>
+</div>
+
+

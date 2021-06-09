@@ -1,0 +1,26 @@
+@media (min-width: 576px ) {
+  .width{
+    width: 95%;
+  }
+}
+
+@media (max-width: 576px ) {
+  .width{
+    width: 95%;
+  }
+}
+
+@media (min-width: 992px) {
+  .width{
+    width: 50%;
+  }
+}
+
+.height{
+  height: 80vh;
+}
+
+.header-line{
+  font-weight: bold;
+}
+

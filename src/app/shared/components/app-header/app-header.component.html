@@ -1,0 +1,23 @@
+<nav ngxNavbarDynamicExpand class="navbar-dark bg-dark">
+  <app-hamburger class="mr-4" style="cursor: pointer;" (click)="sendSideBarStatus()"></app-hamburger>
+  <a class="navbar-brand font-weight-bold" routerLink="['/']"><span class="h1 font-weight-bold rounded mr-2 px-3" style="color:#16151a; background-color:#957bda"> A </span>ppLogo</a>
+  <button class="navbar-toggler" type="button" (click)="collapse.toggle()" aria-controls="main-nav" aria-expanded="false" aria-label="Navigáció kapcsoló">
+    <span class="navbar-toggler-icon d-flex align-items-center justify-content-center"></span>
+  </button>
+  <ngx-navbar-collapse id="main-nav" #collapse="ngxNavbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" href="#">
+          Home <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Some very long Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Some very long Link</a>
+      </li>
+    </ul>
+  </ngx-navbar-collapse>
+</nav>
+

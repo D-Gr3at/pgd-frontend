@@ -1,0 +1,10 @@
+div {
+  width: 1.8rem;
+  height: 0.2rem;
+  background-color: lightgray;
+  margin: 0.3rem  0;
+}
+
+.hamburger-container{
+  margin: 0 0 60% 0;
+}

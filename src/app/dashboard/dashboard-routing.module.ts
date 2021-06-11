@@ -8,11 +8,11 @@ const routes: Routes = [
     path: '',
     component: DashboardhomeComponent,
     children: [
-      { path: '', redirectTo: 'overview', pathMatch: 'full' },
       {
-        path: 'overview',
+        path: 'dashboard',
         component: OverviewComponent,
       },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ],
   },
 ];

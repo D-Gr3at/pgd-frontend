@@ -7,10 +7,15 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthModule} from './auth/auth.module';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from './interceptor/token.interceptor';
+import { PageNotFoundComponent } from './error/page-not-found/page-not-found.component';
+import { UnAuthorizedErrorComponent } from './error/un-authorized-error/un-authorized-error.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent,
+    UnAuthorizedErrorComponent,
   ],
   imports: [
     BrowserModule,

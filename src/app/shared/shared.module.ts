@@ -1,18 +1,21 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgxNavbarModule} from 'ngx-bootstrap-navbar';
-import {RouterModule} from '@angular/router';
 import {ButtonsModule} from 'ngx-bootstrap/buttons';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
-import {CommonModule} from '@angular/common';
 import {NgxInputLoaderModule} from 'ngx-input-loader';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import {NgxWebstorageModule} from 'ngx-webstorage';
+
 
 @NgModule({
   declarations: [

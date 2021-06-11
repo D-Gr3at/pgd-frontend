@@ -9,6 +9,7 @@ import {AuthService} from '../../../services/auth.service';
 export class AppHeaderComponent implements OnInit {
 
     sideBarToggle: boolean;
+  isLoggedIn: boolean;
 
     constructor(
         private authService: AuthService
@@ -16,6 +17,9 @@ export class AppHeaderComponent implements OnInit {
     }
 
     ngOnInit(): void {
+      if (this.authService.getJwtToken()) {
+        this.isLoggedIn = true;
+      }
     }
 
     sendSideBarStatus() {

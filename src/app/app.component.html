@@ -1,11 +1,11 @@
 <app-app-header></app-app-header>
-<div class="row justify-content-center m-0 height">
-  <app-side-bar *ngIf="!isLoggedIn" class="default-side-bar-width bg-dark" [ngClass]="{'side-bar-width': sideBarStatus}"
-                [sideBar]="sideBarStatus"></app-side-bar>
-  <div class="default-main-content-width" [ngClass]="{'main-content-width': sideBarStatus}">
-    <div class="container-width-default">
+<!--<div class="row justify-content-center m-0 height">-->
+<!--  <app-side-bar *ngIf="isLoggedIn" class="default-side-bar-width bg-dark" [ngClass]="{'side-bar-width': sideBarStatus}"-->
+<!--                [sideBar]="sideBarStatus"></app-side-bar>-->
+<!--  <div class="default-main-content-width" [ngClass]="{'main-content-width': sideBarStatus}">-->
+<!--    <div class="container-width-default">-->
       <router-outlet></router-outlet>
-    </div>
-  </div>
-</div>
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 <!--<app-app-footer></app-app-footer>-->

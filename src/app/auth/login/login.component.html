@@ -8,22 +8,35 @@
         </div>
         <div class="col form-group">
           <label for="email">Email: <span class="text-danger">*</span></label>
-          <input type="email" name="email" class="form-control" formControlName="email" id="email" placeholder="Email Address">
+          <input type="email" name="email" class="form-control" [class.is-invalid]="email.invalid && email.touched"
+                 formControlName="email" id="email" placeholder="Email Address">
+          <div *ngIf="email.invalid && email.touched">
+            <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
+            <small *ngIf="email.errors?.email" class="text-danger">Invalid email.</small>
+          </div>
         </div>
+
         <div class="col form-group">
           <label for="password">Password: <span class="text-danger">*</span></label>
-          <input type="password" name="password" class="form-control" formControlName="password" id="password" placeholder="Password">
+          <input type="password" name="password" class="form-control" [class.is-invalid]="password.invalid && password.touched"
+                 formControlName="password" id="password" placeholder="Password">
+          <div *ngIf="password.invalid && password.touched">
+            <small *ngIf="password.errors?.required" class="text-danger">Password is required</small>
+            <small *ngIf="password.errors?.minlength" class="text-danger">Password must be at least 8 characters.</small>
+          </div>
         </div>
         <div class="col btn-group">
-          <button class="btn btn-primary btn-block text-center btn-sm font-weight-bold" type="submit">
-            <span>Login
-<!--            <fa-icon [icon]="faLogout"></fa-icon>-->
+          <button class="btn btn-primary btn-block text-center btn-sm font-weight-bold" type="submit"
+                  [ngxInputLoader]="loading" [ngxInputLoaderConfig]="{padButton: false}" [disabled]="!form.valid">
+            <span *ngIf="loading">&nbsp;</span>
+            <span *ngIf="!loading">
+              Login
+              <fa-icon [icon]="faLogout"></fa-icon>
             </span>
-
           </button>
         </div>
         <div class="col font-weight-bold mt-2">
-          <a routerLink="/forgot-password" class="float-right">Forgot Password?</a>
+          <a routerLink="/forgot-password" class="float-right" >Forgot Password?</a>
         </div>
       </form>
     </div>

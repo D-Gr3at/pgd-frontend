@@ -18,9 +18,6 @@ import {LayoutComponent} from './layout/layout.component';
     CommonModule,
     SharedModule,
     AuthRoutingModule
-  ],
-  exports: [
-    SharedModule
   ]
 })
 export class AuthModule {

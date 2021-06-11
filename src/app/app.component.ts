@@ -7,11 +7,11 @@ import {AuthService} from './services/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   @Input() sideBarStatus: boolean;
 
-  @Input() isLoggedIn: boolean;
+  isLoggedIn: boolean;
 
   constructor(
     private authService: AuthService
@@ -19,6 +19,9 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    if (this.authService.getJwtToken()) {
+      this.isLoggedIn = true;
+    }
     this.authService.setSideBarStatus.subscribe(value => {
       this.sideBarStatus = value;
     });

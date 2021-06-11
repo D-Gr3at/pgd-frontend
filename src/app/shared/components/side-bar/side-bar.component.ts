@@ -17,6 +17,7 @@ export class SideBarComponent implements OnInit {
   imgSize = 20;
 
   @Input() sideBar: boolean;
+  @Input() loginStatus: boolean;
 
   constructor() {
   }

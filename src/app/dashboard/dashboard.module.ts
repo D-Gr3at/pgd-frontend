@@ -7,6 +7,9 @@ import { OverviewComponent } from './overview/overview.component';
 
 @NgModule({
   declarations: [DashboardhomeComponent, OverviewComponent],
-  imports: [SharedModule, DashboardRoutingModule],
+  imports: [
+    DashboardRoutingModule,
+    SharedModule
+  ],
 })
 export class DashboardModule {}

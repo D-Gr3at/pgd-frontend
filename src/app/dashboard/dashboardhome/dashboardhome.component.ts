@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-dashboardhome',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardhomeComponent implements OnInit {
 
-  constructor() { }
+  sideBar: boolean;
+
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.authService.setSideBarStatus.subscribe(value => {
+      this.sideBar = value;
+    });
   }
 
 }

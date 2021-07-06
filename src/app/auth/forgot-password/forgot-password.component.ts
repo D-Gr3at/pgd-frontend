@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {faMailBulk} from '@fortawesome/free-solid-svg-icons';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-forgot-password',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
+  form: FormGroup;
+  passRecoveryIcon = faMailBulk;
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder
+  ) {
+  }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      email: ['', [Validators.email, Validators.required]]
+    });
   }
 
 }

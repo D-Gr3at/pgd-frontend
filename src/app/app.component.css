@@ -1,29 +1,2 @@
-.height{
-  /*height: 60vh;*/
-}
 
-.side-bar-width{
-  width: 5% !important;
-  transition-delay: 0.5ms;
-}
-
-.main-content-width{
-  width: 95% !important;
-  transition-delay: 0.5ms ;
-}
-
-.default-side-bar-width{
-  width: 15%;
-}
-
-.default-main-content-width{
-  min-width: 85%;
-}
-
-.container-width-default{
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-
-}
 

@@ -1,0 +1,17 @@
+.containa {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/*::ng-deep.bs-datepicker {*/
+/*  height: 22rem;*/
+/*}*/
+.custom-content {
+  position: absolute;
+  z-index: 1081;
+  font-weight: bold;
+  top: 350px;
+  cursor: pointer;
+  align-self: center;
+}

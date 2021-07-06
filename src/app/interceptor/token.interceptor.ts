@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -18,15 +18,14 @@ export class TokenInterceptor implements HttpInterceptor {
 
   constructor(
     private authService: AuthService
-  ) {}
+  ) {
+  }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     if (this.isHeaderNeeded(request.url)) {
       request = this.addToken(request, this.authService.getJwtToken());
     }
-
-    console.log(this.isHeaderNeeded(request.url));
 
     return next.handle(request).pipe(catchError(err => {
       if (err instanceof HttpErrorResponse && err.status === 403) {
@@ -43,7 +42,7 @@ export class TokenInterceptor implements HttpInterceptor {
     });
   }
 
-  isHeaderNeeded(url: string){
+  isHeaderNeeded(url: string) {
     return !url.includes('auth');
   }
 
@@ -51,7 +50,6 @@ export class TokenInterceptor implements HttpInterceptor {
     if (!this.isTokenRefreshing) {
       this.isTokenRefreshing = true;
       this.refreshTokenSubject.next(null);
-
       return this.authService.refreshToken()
         .pipe(switchMap((refreshTokenResponse: LoginResponse) => {
           this.isTokenRefreshing = false;

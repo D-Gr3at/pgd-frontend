@@ -6,6 +6,7 @@ import {CriminalCaseListComponent} from './criminal-case-list/criminal-case-list
 import {SharedModule} from '../shared/shared.module';
 import {CriminalCaseRoutingModule} from './criminal-case-routing.module';
 import { EditCriminalCaseComponent } from './edit-criminal-case/edit-criminal-case.component';
+import { CriminalCaseComponent } from './criminal-case/criminal-case.component';
 
 
 
@@ -14,12 +15,13 @@ import { EditCriminalCaseComponent } from './edit-criminal-case/edit-criminal-ca
     AddCriminalCaseComponent,
     CriminalCaseDetailsComponent,
     CriminalCaseListComponent,
-    EditCriminalCaseComponent
+    EditCriminalCaseComponent,
+    CriminalCaseComponent
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    CriminalCaseRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        SharedModule,
+        CriminalCaseRoutingModule,
+    ]
 })
 export class CriminalCaseModule { }

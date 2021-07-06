@@ -1,1 +1,200 @@
-<p>edit-criminal-case works!</p>
+<div class="container-fluid">
+  <div class="d-flex mb-0 pb-0">
+    <h1 class="right mb-0" style="color: darkgrey">Edit incidence Report</h1>
+    <div class="col"></div>
+    <nav class="d-none d-md-block" aria-label="breadcrumb">
+      <ol class="breadcrumb bg-white mb-0">
+        <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a routerLink="/criminal-case">Criminal Cases</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit Incidence Report</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="" style="width: 100%; height: 2px; background-color: darkgrey !important; margin-bottom: 1rem"></div>
+  <h3>Edit Incidence Report</h3>
+  <ng-container *ngIf="form">
+    <form [formGroup]="form" (ngSubmit)="updateReport()">
+      <div class="row mt-3">
+        <div class="col-12 col-sm-6 form-group">
+          <input type="text" class="form-control" formControlName="title" placeholder="Title of the incidence"
+                 [class.is-invalid]="title.invalid && title.touched">
+        </div>
+        <div class="col-12 col-sm-6 form-group">
+          <input type="text" class="form-control" formControlName="location"
+                 placeholder="Location of incidence e.g Rumuola round-about"
+                 [class.is-invalid]="location.invalid && location.touched">
+        </div>
+        <div class="container col-12 col-sm-6 form-group">
+          <input type="text"
+                 placeholder="Date of incidence"
+                 class="form-control"
+                 #dp="bsDatepicker"
+                 [maxDate]="currentDate"
+                 bsDatepicker
+                 [bsConfig]="{ isAnimated: true, containerClass: 'theme-blue', adaptivePosition: true }"
+                 formControlName="dateOfIncidence"
+                 [class.is-invalid]="dateOfIncidence.invalid && dateOfIncidence.touched">
+        </div>
+        <div class="col-12 col-sm-6 form-group">
+        <textarea type="text" class="form-control" cols="10" rows="4"
+                  placeholder="Description of incidence..." formControlName="description"></textarea>
+        </div>
+      </div>
+      <span>
+        <span class="h3">Victim(s):</span>
+        <span class="col"></span>
+        <button class="btn btn-info btn-sm float-right font-weight-bold" type="button"
+                (click)="addVictim()">
+          Add Victim
+          <fa-icon [icon]="add"></fa-icon>
+        </button>
+      </span>
+      <ng-container *ngIf="incidenceReport?.victims?.length > 0">
+        <div formArrayName="victims">
+          <div class="table-responsive mt-3">
+            <table class="table">
+              <caption>List of Victims</caption>
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Date of Birth</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Address</th>
+                <th style="width: 13%;" scope="col">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let victim of victims.controls; let i=index" [formGroupName]="i">
+                <th scope="row">{{i + 1}}</th>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Full Name" formControlName="victimName"
+                           [class.is-invalid]="victimName(i).invalid && victimName(i).touched">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text"
+                           placeholder="Date of Birth"
+                           class="form-control"
+                           #dp="bsDatepicker"
+                           [maxDate]="currentDate"
+                           bsDatepicker
+                           [bsConfig]="{ isAnimated: true, containerClass: 'theme-blue', adaptivePosition: true }"
+                           formControlName="victimDob"
+                           [class.is-invalid]="victimDob(i).invalid && victimDob(i).touched">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <select name="gender" class="form-control text-uppercase" formControlName="victimGender"
+                            [class.is-invalid]="victimGender(i).invalid && victimGender(i).touched">
+                      <option value="" [ngValue]="null" selected>Select gender</option>
+                      <option value="MALE">MALE</option>
+                      <option value="FEMALE">FEMALE</option>
+                    </select>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                <textarea name="address" class="form-control" cols="30" rows="2"
+                          placeholder="Address of victim" formControlName="victimAddress"></textarea>
+                  </div>
+                </td>
+                <td>
+                  <button class="btn btn-danger btn-sm font-weight-bold" *ngIf="i != 0" type="button"
+                          (click)="removeVictim(i)">
+                    <fa-icon [icon]="remove"></fa-icon>
+                    Remove Victim
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </ng-container>
+
+      <span>
+        <span class="h3">Suspect(s):</span>
+        <span class="col"></span>
+        <button class="btn btn-info btn-sm float-right font-weight-bold" type="button" (click)="addSuspect()">
+          Add Suspect
+          <fa-icon [icon]="add"></fa-icon>
+        </button>
+      </span>
+      <div formArrayName="suspects">
+        <div class="table-responsive mt-3">
+          <table class="table">
+            <caption>List of Suspects</caption>
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Full Name</th>
+              <th scope="col">Date of Birth</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Address</th>
+              <th style="width: 13%;" scope="col">Action</th>
+            </tr>
+            </thead>
+            <ng-container *ngIf="suspectLength">
+              <tbody>
+              <tr *ngFor="let suspect of suspects.controls; let i=index" [formGroupName]="i">
+                <th scope="row">{{i + 1}}</th>
+                <td>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Full Name" formControlName="suspectName">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <input type="text"
+                           placeholder="Date of Birth"
+                           class="form-control"
+                           #dp="bsDatepicker"
+                           [maxDate]="currentDate"
+                           bsDatepicker
+                           [bsConfig]="{ isAnimated: true, containerClass: 'theme-blue', adaptivePosition: true }"
+                           formControlName="suspectDob">
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                    <select name="gender" class="form-control text-uppercase" formControlName="suspectGender">
+                      <option value="" [ngValue]="null" selected>Select gender</option>
+                      <option value="MALE">MALE</option>
+                      <option value="FEMALE">FEMALE</option>
+                    </select>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group">
+                <textarea name="address" class="form-control" cols="30" rows="2"
+                          placeholder="Address of suspect" formControlName="suspectAddress"></textarea>
+                  </div>
+                </td>
+                <td>
+                  <button class="btn btn-danger btn-sm font-weight-bold" type="button" (click)="removeSuspect(i)">
+                    <fa-icon [icon]="remove"></fa-icon>
+                    Remove Suspect
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </ng-container>
+            </table>
+          </div>
+        </div>
+
+      <button class="btn btn-primary btn-block float-right mb-5" type="submit"
+              [ngxInputLoader]="loading" [ngxInputLoaderConfig]="{padButton: false}">
+        <span *ngIf="loading">&nbsp;</span>
+        <span *ngIf="!loading">Update Report</span>
+        <fa-icon [icon]="plus"></fa-icon>
+      </button>
+    </form>
+  </ng-container>
+
+</div>
+

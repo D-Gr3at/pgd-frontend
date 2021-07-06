@@ -1,1 +1,92 @@
-<p>criminal-case-details works!</p>
+<div class="container-fluid">
+  <div class="d-flex mb-0 pb-0">
+    <h1 class="right mb-0" style="color: darkgrey">View Incidence Report</h1>
+    <div class="col"></div>
+    <nav class="d-none d-md-block" aria-label="breadcrumb">
+      <ol class="breadcrumb bg-white mb-0">
+        <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a routerLink="/criminal-case">Criminal Cases</a></li>
+        <li class="breadcrumb-item active" aria-current="page">View Incidence Report</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="" style="width: 100%; height: 2px; background-color: darkgrey !important; margin-bottom: 1rem"></div>
+  <div class="text-right">
+    <a class="btn btn-primary" [routerLink]="['../../', incidenceReportId, 'edit']">
+      <fa-icon [icon]="editIcon"></fa-icon>
+      Edit Incidence Report
+    </a>
+  </div>
+  <div class="row mt-3">
+    <div class="col-6 col-sm-4">
+      <h4 class="text-capitalize">case title</h4>
+      <b>{{incidenceReport?.title || 'N/A'}}</b>
+    </div>
+    <div class="col-6 col-sm-4">
+      <h4 class="text-capitalize">Location of incidence</h4>
+      <b>{{incidenceReport?.location || 'N/A'}}</b>
+    </div>
+    <div class="col-6 col-sm-4">
+      <h4 class="text-capitalize">Date incidence occurred</h4>
+      <b>{{incidenceReport?.dateOfIncidence || 'N/A'}}</b>
+    </div>
+    <div class="col-12 col-sm-12 mt-3">
+      <h4 class="text-capitalize">Description of incidence</h4>
+      <b>{{incidenceReport?.description || 'N/A'}}</b>
+    </div>
+  </div>
+  <br>
+  <ng-container *ngIf="incidenceReport?.victims?.length > 0">
+    <h4 class="right mb-0" style="color: darkgrey">Victims detail</h4>
+    <div class="" style="width: 100%; height: 2px; background-color: darkgrey !important; margin-bottom: 1rem"></div>
+    <div class="row">
+      <div class="col-12">
+        <accordion [isAnimated]="true">
+          <accordion-group *ngFor="let victim of incidenceReport.victims" [heading]="victim.name">
+            <div class="row">
+              <div class="col-6 col-sm-4">
+                <h4 class="text-capitalize">Address</h4>
+                <b>{{victim?.address || 'N/A'}}</b>
+              </div>
+              <div class="col-6 col-sm-4">
+                <h4 class="text-capitalize">Date of birth</h4>
+                <b>{{victim?.dateOfBirth || 'N/A'}}</b>
+              </div>
+              <div class="col-6 col-sm-4">
+                <h4 class="text-capitalize">Gender</h4>
+                <b>{{victim?.genderConstant || 'N/A'}}</b>
+              </div>
+            </div>
+          </accordion-group>
+        </accordion>
+      </div>
+    </div>
+  </ng-container>
+  <br>
+  <ng-container *ngIf="incidenceReport?.suspects?.length > 0">
+    <h4 class="right mb-0" style="color: darkgrey">Suspects detail</h4>
+    <div class="" style="width: 100%; height: 2px; background-color: darkgrey !important; margin-bottom: 1rem"></div>
+    <div class="row">
+      <div class="col-12">
+        <accordion [isAnimated]="true">
+          <accordion-group *ngFor="let suspect of incidenceReport.suspects" [heading]="suspect.name">
+            <div class="row">
+              <div class="col-6 col-sm-4">
+                <h4 class="text-capitalize">Address</h4>
+                <b>{{suspect?.address || 'N/A'}}</b>
+              </div>
+              <div class="col-6 col-sm-4">
+                <h4 class="text-capitalize">Date of birth</h4>
+                <b>{{suspect?.dateOfBirth || 'N/A'}}</b>
+              </div>
+              <div class="col-6 col-sm-4">
+                <h4 class="text-capitalize">Gender</h4>
+                <b>{{suspect?.genderConstant || 'N/A'}}</b>
+              </div>
+            </div>
+          </accordion-group>
+        </accordion>
+      </div>
+    </div>
+  </ng-container>
+</div>

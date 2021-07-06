@@ -1,1 +1,52 @@
-<p>criminal-case-list works!</p>
+<div class="container-fluid">
+  <div class="d-flex mb-0 mt-2 pb-0">
+    <h1 class="right mb-0" style="color: darkgrey">Criminal Cases</h1>
+    <div class="col"></div>
+    <nav class="d-none d-md-block" aria-label="breadcrumb">
+      <ol class="breadcrumb bg-white mb-0">
+        <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Criminal Cases</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="" style="height: 2px; background-color: darkgrey !important;"></div>
+  <div class="row mt-3">
+    <div class="col-12">
+      <form [formGroup]="form">
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="incidence" id="incidence"
+                 placeholder="Type anything your remember about the incidence" (keyup)="filter()">
+        </div>
+      </form>
+
+      <div>
+        <h3>Reported Cases</h3>
+        <ngx-datatable
+          class="material p-4"
+          #myTable
+          [rows]="rows"
+          [columns]="columns"
+          [columnMode]="ColumnMode.force"
+          [headerHeight]="50"
+          [footerHeight]="50"
+          rowHeight="auto"
+          [externalPaging]="true"
+          [count]="page.totalElements"
+          [offset]="page.pageNumber"
+          [limit]="page.size"
+          (page)="setPage($event)"
+        >
+        </ngx-datatable>
+
+        <ng-template #buttonsTemplate let-row="row" let-value="value">
+          <span class="font-weight-bold">
+            <a routerLink="{{value}}/details">View</a> |
+            <a href="javascript:void(0)" (click)="delete(value)" class="text-danger">Delete</a>
+          </span>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</div>
+

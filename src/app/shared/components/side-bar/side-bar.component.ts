@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {faChartLine, faFileAlt, faHome, faListAlt, faPlus, faUserCircle} from '@fortawesome/free-solid-svg-icons';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -15,15 +16,20 @@ export class SideBarComponent implements OnInit {
   analytics = faChartLine;
   faUser = faUserCircle;
   imgSize = 20;
+  @Output() toggleSideBar: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  @Input() sideBar: boolean;
+  sideBar: boolean;
   @Input() loginStatus: boolean;
 
-  constructor() {
+  constructor(
+    private authService: AuthService
+  ) {
   }
 
   ngOnInit(): void {
-    console.log(this.sideBar);
+    this.authService.setSideBarStatus.subscribe(value => {
+      this.sideBar = value;
+    });
   }
 
 }

@@ -40,17 +40,17 @@ export class AuthService {
   }
 
   getUsername() {
-    return this.localStorage.retrieve('username');
+    return this.localStorage.retrieve('email');
   }
 
   isAuthenticated() {
-    return this.getJwtToken() !== null;
+    return !!this.getJwtToken();
   }
 
   refreshToken(): Observable<LoginResponse> {
     const refreshTokenPayload = {
       refreshToken: this.getRefreshToken(),
-      username: this.getUsername()
+      email: this.getUsername()
     };
     return this.httpClient.post<LoginResponse>(this.env.baseUrl + '/auth/refresh/token', refreshTokenPayload)
       .pipe(tap(response => {

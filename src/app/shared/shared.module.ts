@@ -15,11 +15,18 @@ import {NgxInputLoaderModule} from 'ngx-input-loader';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import {NgxWebstorageModule} from 'ngx-webstorage';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {AccordionModule} from 'ngx-bootstrap/accordion';
+import {ChartsModule} from 'ng2-charts';
 
 
 @NgModule({
   declarations: [
     AppHeaderComponent,
+    ToolbarComponent,
+    SidenavComponent,
     AppFooterComponent,
     SideBarComponent,
     HamburgerComponent,
@@ -30,6 +37,7 @@ import {NgxWebstorageModule} from 'ngx-webstorage';
     ButtonsModule,
     FontAwesomeModule,
     NgxWebstorageModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     NgxInputLoaderModule.forRoot({
       // Defaults are shown. Change them to your according to your need.
 
@@ -52,23 +60,31 @@ import {NgxWebstorageModule} from 'ngx-webstorage';
       preventDuplicates: true,
     }),
     NgxNavbarModule,
+    AccordionModule,
     ReactiveFormsModule,
     RouterModule
   ],
   exports: [
     AppHeaderComponent,
+    ToolbarComponent,
+    SidenavComponent,
+    NgxDatatableModule,
     AppFooterComponent,
+    BsDatepickerModule,
     NgxInputLoaderModule,
     HamburgerComponent,
     FontAwesomeModule,
     FormsModule,
     CommonModule,
     NgxNavbarModule,
+    ChartsModule,
     RouterModule,
     ButtonsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     NgxWebstorageModule,
-    SideBarComponent
+    SideBarComponent,
+    AccordionModule
   ]
 })
 export class SharedModule { }

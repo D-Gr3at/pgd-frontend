@@ -1,1 +1,48 @@
-<p>overview works!</p>
+<div class="container-fluid">
+  <div class="d-flex mb-0 pb-0">
+    <h1 class="right mb-0" style="color: darkgrey">Dashboard</h1>
+    <div class="col-sm-9"></div>
+    <nav class="d-none d-md-block" aria-label="breadcrumb">
+      <ol class="breadcrumb bg-white mb-0">
+        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="" style="width: 100%; height: 2px; background-color: darkgrey !important;"></div>
+  <div class="row mt-3">
+      <div class="col-sm-6">
+        <h2>Monthly Incidence Report Chart</h2>
+        <div style="display: block">
+          <canvas baseChart
+                  [datasets]="barChartData"
+                  [labels]="barChartLabels"
+                  [options]="barChartOptions"
+                  [colors]="barChartColor"
+                  [legend]="barChartLegend"
+                  [chartType]="barChartType">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <h2>Quarterly Incidence Report Chart</h2>
+        <div style="display: block">
+          <canvas baseChart
+                  [data]="pieChartData"
+                  [labels]="pieChartLabels"
+                  [colors]="chartColors"
+                  [chartType]="pieChartType"></canvas>
+        </div>
+      </div>
+    </div>
+  <div class="row mt-5">
+    <div class="col-sm-4">
+      <div class="card text-white bg-success mb-3" style="max-width: 18rem; height: 15rem;">
+        <div class="card-header font-weight-bolder ">Number of Reported Incidence</div>
+        <div class="text-center">
+          <h1 #counter style="font-size: 8rem;">0</h1>
+<!--          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

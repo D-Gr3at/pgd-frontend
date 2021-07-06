@@ -9,7 +9,8 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from './interceptor/token.interceptor';
 import { PageNotFoundComponent } from './error/page-not-found/page-not-found.component';
 import { UnAuthorizedErrorComponent } from './error/un-authorized-error/un-authorized-error.component';
-import {RouterModule} from '@angular/router';
+import {AuthGuard} from './guard/auth.guard';
+import {LoggedInAuthGuard} from './guard/logged-in-auth.guard';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import {RouterModule} from '@angular/router';
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
-  }],
+  }, AuthGuard, LoggedInAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
